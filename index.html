@@ -1,0 +1,858 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Pós-Graduação Saúde Estética Avançada</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,600;1,300;1,400&family=DM+Sans:wght@300;400;500;600&display=swap" rel="stylesheet">
+
+<style>
+:root {
+  --ink:    #0a1520;
+  --cream:  #f5f0eb;
+  --ocean:  #2b7f9a;
+  --mist:   #c8d8df;
+  --steel:  #617080;
+  --white:  #ffffff;
+  --gold:   #b8956a;
+}
+
+*, *::before, *::after { margin:0; padding:0; box-sizing:border-box; }
+
+html { scroll-behavior:smooth; }
+
+body {
+  background: var(--cream);
+  color: var(--ink);
+  font-family: 'DM Sans', sans-serif;
+  line-height: 1.6;
+  overflow-x: hidden;
+}
+
+/* ─── NOISE TEXTURE OVERLAY ─── */
+body::before {
+  content:'';
+  position:fixed;
+  inset:0;
+  pointer-events:none;
+  z-index:9999;
+  opacity:.025;
+  background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 256 256' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='noise'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23noise)'/%3E%3C/svg%3E");
+}
+
+/* ─── SCROLLBAR ─── */
+::-webkit-scrollbar { width:6px; }
+::-webkit-scrollbar-track { background:var(--cream); }
+::-webkit-scrollbar-thumb { background:var(--mist); border-radius:3px; }
+
+/* ─── HEADER ─── */
+header {
+  position: sticky;
+  top: 0;
+  z-index: 100;
+  background: rgba(245,240,235,.92);
+  backdrop-filter: blur(16px);
+  -webkit-backdrop-filter: blur(16px);
+  border-bottom: 1px solid rgba(10,21,32,.08);
+  padding: 0 7%;
+  height: 72px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+
+.logo {
+  display: flex;
+  align-items: center;
+  gap: 20px;
+}
+
+.logo img { height: 40px; }
+
+/* placeholder for missing imgs */
+.logo-placeholder {
+  height: 40px;
+  padding: 6px 18px;
+  background: var(--ink);
+  color: var(--cream);
+  font-family: 'Cormorant Garamond', serif;
+  font-size: 17px;
+  font-weight: 600;
+  letter-spacing: 2px;
+  border-radius: 4px;
+  display: flex;
+  align-items: center;
+}
+
+.logo-sep {
+  width: 1px;
+  height: 26px;
+  background: var(--mist);
+}
+
+.btn {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  padding: 12px 28px;
+  font-family: 'DM Sans', sans-serif;
+  font-size: 13px;
+  font-weight: 600;
+  letter-spacing: 1.5px;
+  text-transform: uppercase;
+  text-decoration: none;
+  border: none;
+  border-radius: 6px;
+  cursor: pointer;
+  transition: all .25s ease;
+}
+
+.btn-primary {
+  background: var(--ink);
+  color: var(--cream);
+}
+
+.btn-primary:hover {
+  background: var(--ocean);
+  transform: translateY(-2px);
+  box-shadow: 0 8px 24px rgba(43,127,154,.3);
+}
+
+.btn-accent {
+  background: var(--ocean);
+  color: #fff;
+}
+
+.btn-accent:hover {
+  background: #236a83;
+  transform: translateY(-2px);
+  box-shadow: 0 8px 24px rgba(43,127,154,.35);
+}
+
+.btn-lg {
+  padding: 18px 44px;
+  font-size: 14px;
+}
+
+/* ─── HERO ─── */
+.hero {
+  min-height: calc(100vh - 72px);
+  padding: 80px 7% 100px;
+  display: grid;
+  grid-template-columns: 1.4fr 1fr;
+  gap: 80px;
+  align-items: center;
+  position: relative;
+  overflow: hidden;
+}
+
+/* decorative circle */
+.hero::after {
+  content:'';
+  position:absolute;
+  right: -200px;
+  top: 50%;
+  transform: translateY(-50%);
+  width: 700px;
+  height: 700px;
+  border-radius: 50%;
+  background: radial-gradient(circle, rgba(43,127,154,.12) 0%, transparent 70%);
+  pointer-events: none;
+}
+
+.eyebrow {
+  font-size: 11px;
+  font-weight: 600;
+  letter-spacing: 4px;
+  text-transform: uppercase;
+  color: var(--ocean);
+  margin-bottom: 24px;
+  display: flex;
+  align-items: center;
+  gap: 12px;
+}
+
+.eyebrow::before {
+  content:'';
+  width:32px;
+  height:2px;
+  background: var(--ocean);
+}
+
+.hero h1 {
+  font-family: 'Cormorant Garamond', serif;
+  font-size: clamp(56px, 7vw, 96px);
+  font-weight: 300;
+  line-height: .96;
+  letter-spacing: -1px;
+  margin-bottom: 32px;
+}
+
+.hero h1 em {
+  font-style: italic;
+  color: var(--steel);
+}
+
+.hero-lead {
+  font-size: 17px;
+  color: var(--steel);
+  max-width: 520px;
+  margin-bottom: 48px;
+  line-height: 1.75;
+}
+
+.hero-meta {
+  display: flex;
+  gap: 40px;
+  margin-top: 48px;
+}
+
+.meta-item strong {
+  display: block;
+  font-family: 'Cormorant Garamond', serif;
+  font-size: 36px;
+  font-weight: 300;
+  color: var(--ocean);
+  line-height: 1;
+}
+
+.meta-item span {
+  font-size: 12px;
+  color: var(--steel);
+  letter-spacing: 1px;
+  text-transform: uppercase;
+}
+
+/* ─── CARD HERO ─── */
+.card-hero {
+  background: var(--white);
+  border-radius: 20px;
+  padding: 48px 40px;
+  box-shadow: 0 32px 80px rgba(10,21,32,.1), 0 4px 16px rgba(10,21,32,.06);
+  position: relative;
+  z-index: 1;
+}
+
+.card-hero-badge {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  background: rgba(43,127,154,.1);
+  color: var(--ocean);
+  padding: 6px 14px;
+  border-radius: 100px;
+  font-size: 12px;
+  font-weight: 600;
+  letter-spacing: 1px;
+  text-transform: uppercase;
+  margin-bottom: 28px;
+}
+
+.pulse {
+  width: 8px;
+  height: 8px;
+  border-radius: 50%;
+  background: var(--ocean);
+  animation: pulse 2s infinite;
+}
+
+@keyframes pulse {
+  0%, 100% { opacity:1; transform:scale(1); }
+  50% { opacity:.5; transform:scale(1.4); }
+}
+
+.card-hero h3 {
+  font-family: 'Cormorant Garamond', serif;
+  font-size: 32px;
+  font-weight: 400;
+  margin-bottom: 16px;
+  line-height: 1.2;
+}
+
+.card-hero p {
+  font-size: 15px;
+  color: var(--steel);
+  margin-bottom: 32px;
+  line-height: 1.7;
+}
+
+.card-hero .btn {
+  width: 100%;
+  justify-content: center;
+}
+
+.card-hero-divider {
+  border: none;
+  border-top: 1px solid rgba(10,21,32,.08);
+  margin: 28px 0;
+}
+
+.card-hero-list {
+  list-style: none;
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+}
+
+.card-hero-list li {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  font-size: 14px;
+  color: var(--steel);
+}
+
+.card-hero-list li::before {
+  content:'✓';
+  width: 22px;
+  height: 22px;
+  border-radius: 50%;
+  background: rgba(43,127,154,.12);
+  color: var(--ocean);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 11px;
+  font-weight: 700;
+  flex-shrink: 0;
+}
+
+/* ─── DIVIDER ─── */
+.divider-line {
+  width: 86%;
+  margin: 0 auto;
+  height: 1px;
+  background: linear-gradient(90deg, transparent, var(--mist), transparent);
+}
+
+/* ─── SECTION GENERIC ─── */
+.section {
+  padding: 100px 7%;
+}
+
+.section-eyebrow {
+  font-size: 11px;
+  font-weight: 600;
+  letter-spacing: 4px;
+  color: var(--ocean);
+  text-transform: uppercase;
+  margin-bottom: 16px;
+}
+
+.section-title {
+  font-family: 'Cormorant Garamond', serif;
+  font-size: clamp(40px, 5vw, 64px);
+  font-weight: 300;
+  line-height: 1.1;
+  margin-bottom: 48px;
+}
+
+/* ─── AUDIENCE CARDS ─── */
+.audience-grid {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 20px;
+  justify-content: center;
+}
+
+.audience-card {
+  border-radius: 16px;
+  overflow: hidden;
+  position: relative;
+  aspect-ratio: 3/4;
+  cursor: default;
+  flex: 0 0 calc(25% - 15px);
+  max-width: calc(25% - 15px);
+}
+
+.audience-card img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  transition: transform .6s ease;
+  display: block;
+}
+
+.audience-card:hover img {
+  transform: scale(1.06);
+}
+
+.audience-card-overlay {
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(to top, rgba(10,21,32,.75) 0%, transparent 55%);
+  transition: opacity .3s;
+}
+
+.audience-card:hover .audience-card-overlay {
+  opacity: .9;
+}
+
+.audience-card-label {
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  padding: 28px 22px 22px;
+  color: #fff;
+  font-family: 'Cormorant Garamond', serif;
+  font-size: 22px;
+  font-weight: 400;
+  letter-spacing: .5px;
+}
+
+/* ─── WHY SECTION ─── */
+.why-grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 80px;
+  align-items: center;
+}
+
+.why-img-wrap {
+  position: relative;
+}
+
+.why-img-wrap img {
+  width: 100%;
+  border-radius: 20px;
+  display: block;
+  object-fit: cover;
+  aspect-ratio: 4/5;
+}
+
+.why-img-accent {
+  position: absolute;
+  bottom: -24px;
+  right: -24px;
+  width: 180px;
+  height: 180px;
+  background: var(--ocean);
+  border-radius: 16px;
+  z-index: -1;
+}
+
+.features {
+  display: flex;
+  flex-direction: column;
+  gap: 0;
+}
+
+.feature-item {
+  padding: 28px 0 28px 28px;
+  border-left: 2px solid transparent;
+  transition: border-color .3s, background .3s;
+  border-radius: 0 8px 8px 0;
+  position: relative;
+}
+
+.feature-item::before {
+  content: '';
+  position: absolute;
+  left: 0;
+  top: 0;
+  bottom: 0;
+  width: 2px;
+  background: var(--mist);
+  transition: background .3s;
+}
+
+.feature-item:hover::before {
+  background: var(--ocean);
+}
+
+.feature-item:hover {
+  background: rgba(43,127,154,.04);
+}
+
+.feature-num {
+  font-family: 'Cormorant Garamond', serif;
+  font-size: 13px;
+  color: var(--ocean);
+  font-weight: 600;
+  letter-spacing: 2px;
+  margin-bottom: 8px;
+}
+
+.feature-item strong {
+  display: block;
+  font-size: 15px;
+  font-weight: 600;
+  margin-bottom: 6px;
+  letter-spacing: .5px;
+}
+
+.feature-item p {
+  font-size: 14px;
+  color: var(--steel);
+  line-height: 1.6;
+}
+
+/* ─── DARK CTA ─── */
+.cta {
+  background: var(--ink);
+  padding: 120px 7%;
+  position: relative;
+  overflow: hidden;
+  text-align: center;
+}
+
+.cta::before {
+  content:'';
+  position:absolute;
+  inset:0;
+  background: radial-gradient(ellipse 60% 80% at 50% 110%, rgba(43,127,154,.25) 0%, transparent 65%);
+  pointer-events:none;
+}
+
+.cta-eyebrow {
+  font-size: 11px;
+  font-weight: 600;
+  letter-spacing: 4px;
+  color: var(--ocean);
+  text-transform: uppercase;
+  margin-bottom: 24px;
+}
+
+.cta h2 {
+  font-family: 'Cormorant Garamond', serif;
+  font-size: clamp(44px, 6vw, 80px);
+  font-weight: 300;
+  color: var(--cream);
+  line-height: 1.05;
+  margin-bottom: 28px;
+}
+
+.cta h2 em {
+  font-style: italic;
+  color: var(--mist);
+}
+
+.cta p {
+  font-size: 17px;
+  color: rgba(245,240,235,.55);
+  max-width: 540px;
+  margin: 0 auto 48px;
+  line-height: 1.75;
+}
+
+/* ─── FOOTER ─── */
+footer {
+  background: #040e18;
+  padding: 32px 7%;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  color: rgba(255,255,255,.35);
+  font-size: 13px;
+}
+
+footer a {
+  color: rgba(255,255,255,.5);
+  text-decoration: none;
+  transition: color .2s;
+}
+
+footer a:hover { color: var(--mist); }
+
+/* ─── SCROLL REVEAL ─── */
+.reveal {
+  opacity: 0;
+  transform: translateY(40px);
+  transition: opacity .7s ease, transform .7s ease;
+}
+
+.reveal.visible {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+/* ─── RESPONSIVE ─── */
+@media (max-width: 1000px) {
+  .hero, .why-grid {
+    grid-template-columns: 1fr;
+    gap: 56px;
+  }
+
+  .hero::after { display:none; }
+
+  .why-img-wrap { max-width:500px; }
+
+  .card-hero { max-width: 480px; }
+}
+
+@media (max-width: 640px) {
+  header {
+    height: auto;
+    padding: 14px 5%;
+    flex-direction: column;
+    gap: 12px;
+  }
+
+  .logo img { height: 32px; }
+
+  .logo-placeholder {
+    height: 32px;
+    font-size: 14px;
+    padding: 4px 12px;
+  }
+
+  header .btn {
+    width: 100%;
+    justify-content: center;
+    padding: 12px 20px;
+    font-size: 12px;
+  }
+
+  .hero { padding: 60px 5% 80px; }
+  .section { padding: 72px 5%; }
+  .cta { padding: 80px 5%; }
+  footer { flex-direction: column; gap: 10px; text-align: center; }
+  .hero-meta { gap: 28px; }
+  .audience-card {
+    flex: 0 0 calc(50% - 10px);
+    max-width: calc(50% - 10px);
+  }
+  .why-grid { grid-template-columns: 1fr; }
+}
+</style>
+</head>
+
+<body>
+
+<!-- HEADER -->
+<header>
+  <div class="logo">
+    <img src="logo-imeso.png" alt="IMESO" onerror="this.style.display='none';this.nextElementSibling.style.display='flex'">
+    <span class="logo-placeholder" style="display:none">IMESO</span>
+    <div class="logo-sep"></div>
+    <img src="logo-iepg.png" alt="IEPG" onerror="this.style.display='none';this.nextElementSibling.style.display='flex'">
+    <span class="logo-placeholder" style="display:none">IEPG</span>
+  </div>
+  <a href="#inscricao" class="btn btn-primary">Inscreva-se</a>
+</header>
+
+
+<!-- HERO -->
+<section class="hero">
+
+  <div>
+    <div class="eyebrow reveal">Pós-Graduação • Turma 2026</div>
+
+    <h1 class="reveal">
+      Saúde Estética<br>
+      <em>Avançada</em>
+    </h1>
+
+    <p class="hero-lead reveal">
+      Formação de excelência para profissionais da saúde que desejam atuar com segurança clínica, inovação científica e alta performance em estética avançada.
+    </p>
+
+    <a href="#inscricao" class="btn btn-accent btn-lg reveal">
+      Garantir minha vaga
+    </a>
+
+    <div class="hero-meta reveal">
+      <div class="meta-item">
+        <strong>18</strong>
+        <span>Módulos</span>
+      </div>
+      <div class="meta-item">
+        <strong>360h</strong>
+        <span>Carga horária</span>
+      </div>
+      <div class="meta-item">
+        <strong>7+</strong>
+        <span>Especialidades</span>
+      </div>
+    </div>
+  </div>
+
+  <!-- RIGHT CARD -->
+  <div class="card-hero reveal">
+    <div class="card-hero-badge">
+      <div class="pulse"></div>
+      Vagas Limitadas
+    </div>
+
+    <h3>Próxima turma<br>abrindo em 2026</h3>
+
+    <p>Aprendizado intensivo, prática clínica supervisionada e acesso às metodologias mais atuais do mercado de estética avançada.</p>
+
+    <a href="#inscricao" class="btn btn-accent">Quero me inscrever</a>
+
+    <hr class="card-hero-divider">
+
+    <ul class="card-hero-list">
+      <li>Prática clínica supervisionada</li>
+      <li>Corpo docente especializado</li>
+      <li>Certificado de pós-graduação reconhecido</li>
+      <li>Conteúdo atualizado e aplicável</li>
+    </ul>
+  </div>
+
+</section>
+
+<div class="divider-line"></div>
+
+
+<!-- AUDIENCE -->
+<section class="section" id="publico">
+  <p class="section-eyebrow reveal">Para quem é</p>
+  <h2 class="section-title reveal">Público-alvo</h2>
+
+  <div class="audience-grid">
+
+    <div class="audience-card reveal">
+      <img src="https://images.unsplash.com/photo-1582750433449-648ed127bb54?w=600&q=80" alt="Farmacêuticos" loading="lazy">
+      <div class="audience-card-overlay"></div>
+      <div class="audience-card-label">Farmacêuticos</div>
+    </div>
+
+    <div class="audience-card reveal">
+      <img src="https://images.unsplash.com/photo-1559839734-2b71ea197ec2?w=600&q=80" alt="Biomédicos" loading="lazy">
+      <div class="audience-card-overlay"></div>
+      <div class="audience-card-label">Biomédicos</div>
+    </div>
+
+    <div class="audience-card reveal">
+      <img src="https://images.unsplash.com/photo-1594824476967-48c8b964273f?w=600&q=80" alt="Enfermeiros" loading="lazy">
+      <div class="audience-card-overlay"></div>
+      <div class="audience-card-label">Enfermeiros</div>
+    </div>
+
+    <div class="audience-card reveal">
+      <img src="https://images.unsplash.com/photo-1612349317150-e413f6a5b16d?w=600&q=80" alt="Médicos" loading="lazy">
+      <div class="audience-card-overlay"></div>
+      <div class="audience-card-label">Médicos</div>
+    </div>
+
+    <div class="audience-card reveal">
+      <img src="https://images.unsplash.com/photo-1622253692010-333f2da6031d?w=600&q=80" alt="Dentistas" loading="lazy">
+      <div class="audience-card-overlay"></div>
+      <div class="audience-card-label">Dentistas</div>
+    </div>
+
+    <div class="audience-card reveal">
+      <img src="https://images.unsplash.com/photo-1570172619644-dfd03ed5d881?w=600&q=80" alt="Esteticistas" loading="lazy">
+      <div class="audience-card-overlay"></div>
+      <div class="audience-card-label">Esteticistas</div>
+    </div>
+
+    <div class="audience-card reveal">
+      <img src="https://images.unsplash.com/photo-1631815588090-d4bfec5b1ccb?w=600&q=80" alt="Fisioterapeutas" loading="lazy">
+      <div class="audience-card-overlay"></div>
+      <div class="audience-card-label">Fisioterapeutas</div>
+    </div>
+
+  </div>
+</section>
+
+<div class="divider-line"></div>
+
+
+<!-- WHY -->
+<section class="section" id="diferenciais">
+
+  <div class="why-grid">
+
+    <div class="why-img-wrap reveal">
+      <img src="https://images.unsplash.com/photo-1588776814546-daab30f310ce?w=800&q=80" alt="Prática clínica">
+      <div class="why-img-accent"></div>
+    </div>
+
+    <div>
+      <p class="section-eyebrow reveal">Nossos diferenciais</p>
+      <h2 class="section-title reveal" style="margin-bottom:36px;">Por que<br>nos escolher?</h2>
+
+      <div class="features">
+
+        <div class="feature-item reveal">
+          <div class="feature-num">01</div>
+          <strong>Prática Real</strong>
+          <p>Experiência clínica supervisionada desde os primeiros módulos, com pacientes reais e protocolos atuais.</p>
+        </div>
+
+        <div class="feature-item reveal">
+          <div class="feature-num">02</div>
+          <strong>Técnicas Avançadas</strong>
+          <p>Conteúdo rigorosamente atualizado, incluindo as mais recentes evidências científicas e tecnologias do setor.</p>
+        </div>
+
+        <div class="feature-item reveal">
+          <div class="feature-num">03</div>
+          <strong>Alta Empregabilidade</strong>
+          <p>Destaque competitivo no mercado com certificação reconhecida e rede de profissionais formados.</p>
+        </div>
+
+        <div class="feature-item reveal">
+          <div class="feature-num">04</div>
+          <strong>Corpo Docente de Elite</strong>
+          <p>Professores atuantes no mercado, com vasta experiência clínica e acadêmica nas suas especialidades.</p>
+        </div>
+
+      </div>
+    </div>
+
+  </div>
+</section>
+
+
+<!-- CTA -->
+<section class="cta" id="inscricao">
+
+  <p class="cta-eyebrow reveal">Turma 2026 • Vagas Limitadas</p>
+
+  <h2 class="reveal">
+    Transforme sua carreira<br>
+    <em>na estética avançada</em>
+  </h2>
+
+  <p class="reveal">
+    Garanta sua participação na próxima turma e desenvolva competências clínicas avançadas que o mercado exige.
+  </p>
+
+  <a href="https://forms.gle/kbw1dCGMH5gishyNA" target="_blank" rel="noopener" class="btn btn-accent btn-lg reveal">
+    Inscrever agora
+  </a>
+
+</section>
+
+
+<!-- FOOTER -->
+<footer>
+  <span>© 2026 Pós-Graduação Saúde Estética Avançada — IMESO &amp; IEPG</span>
+  <span>Todos os direitos reservados</span>
+</footer>
+
+
+<script>
+/* ─── SCROLL REVEAL ─── */
+const revealEls = document.querySelectorAll('.reveal');
+
+const observer = new IntersectionObserver((entries) => {
+  entries.forEach(entry => {
+    if (entry.isIntersecting) {
+      entry.target.classList.add('visible');
+    }
+  });
+}, { threshold: 0.12 });
+
+revealEls.forEach((el, i) => {
+  el.style.transitionDelay = `${(i % 6) * 60}ms`;
+  observer.observe(el);
+});
+
+/* ─── HEADER SHADOW ON SCROLL ─── */
+const header = document.querySelector('header');
+window.addEventListener('scroll', () => {
+  header.style.boxShadow = window.scrollY > 10
+    ? '0 2px 24px rgba(10,21,32,.1)'
+    : 'none';
+});
+</script>
+
+</body>
+</html>
